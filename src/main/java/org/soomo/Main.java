@@ -8,7 +8,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.soomo.domain.Game;
+import org.soomo.logic.Game;
 
 public class Main extends Application {
     @Override
