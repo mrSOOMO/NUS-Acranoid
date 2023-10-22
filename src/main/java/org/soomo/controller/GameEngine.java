@@ -33,15 +33,15 @@ import java.util.Objects;
 import static org.soomo.controller.ScoreManager.*;
 
 public class GameEngine {
-    private final Stage stage; // JavaFX stage
-    private GamePane gamePane; // Reference to the game pane (view)
+    private final Stage stage;
+    private GamePane gamePane;
     private Level currentLevel;
     private int remainingLives;
     private AnimationTimer gameLoop; // AnimationTimer for the game loop
-    private boolean goLeft, goRight; // Booleans to control the paddle's movement
-    private boolean isPaused = false; // Flag to track pause state
-    private int score = 0; // Store the player's score
-    private Label scoreLabel = new Label("Score: " + score); // Label to display the score
+    private boolean goLeft, goRight;
+    private boolean isPaused = false;
+    private final int score = 0;
+    private final Label scoreLabel = new Label("Score: " + score);
 
     /**
      * @param gamePane The game pane
@@ -55,6 +55,7 @@ public class GameEngine {
         scoreLabel.setLayoutY(GameStart.SCENE_HEIGHT - 30);
         gamePane.getChildren().add(scoreLabel);
     }
+
     public Stage getStage() {
         return this.stage;
     }
@@ -254,7 +255,7 @@ public class GameEngine {
         // Clear any existing game elements from the game pane
         gamePane.clear();
         gamePane = new GamePane();
-       // gamePane.getBall().updateSpeed();
+        // gamePane.getBall().updateSpeed();
         // Score Manager
         gamePane.getChildren().add(new ScoreManager().getScoreLabel());
         ScoreManager.startScoring();
@@ -368,7 +369,6 @@ public class GameEngine {
         });
     }
 
-
     public void togglePause() {
         if (isPaused) {
             // Unpause game
@@ -380,23 +380,6 @@ public class GameEngine {
         }
         isPaused = !isPaused;
     }
-
-//    public void startGameLoop() {
-//        gameLoop = new AnimationTimer() {
-//            @Override
-//            public void handle(long now) {
-//                if (previousTime == 0) {
-//                    previousTime = now;
-//                }
-//
-//                float deltaTime = (now - previousTime) / 1_000_000_000.0f; // Convert to seconds
-//                previousTime = now;
-//
-//                update(deltaTime); // Pass deltaTime to your update method
-//            }
-//        };
-//        gameLoop.start();
-//    }
 
     public void startGameLoop() {
         gameLoop = new AnimationTimer() {

@@ -12,13 +12,12 @@ public class Brick extends Rectangle {
     public Brick(double x, double y, double width, double height) {
         setWidth(width);
         setHeight(height);
-        // Load the image from resources
         Image ballImage =
                 new Image(Objects.requireNonNull(getClass().getResourceAsStream("/sprites/brick.gif")));
 
         // Create an ImagePattern based on the loaded image
         ImagePattern ballPattern = new ImagePattern(ballImage);
-        setFill(ballPattern); // Color of the brick
+        setFill(ballPattern);
         setTranslateX(x);
         setTranslateY(y);
         destroyed = false;

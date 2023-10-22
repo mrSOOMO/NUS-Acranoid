@@ -40,6 +40,19 @@ public class HomeScreenLogic {
         homeScreenView.getExitButton().setOnAction(e -> exitGame());
     }
 
+    // Method to show the home screen
+    public static void showHomeScreen(Stage stage) {
+        // Initialize HomeScreenView and HomeScreenLogic
+        HomeScreenView homeScreenView = new HomeScreenView(stage);
+        new HomeScreenLogic(homeScreenView, stage);
+
+        // Create a new Scene for the home screen
+        Scene homeScreenScene =
+                new Scene(homeScreenView, GameStart.SCENE_WIDTH, GameStart.SCENE_HEIGHT);
+
+        stage.setScene(homeScreenScene);
+    }
+
     private void setDifficulty() {
         VBox difficultyPane = new VBox(10);
         difficultyPane.setAlignment(Pos.CENTER);
@@ -95,18 +108,6 @@ public class HomeScreenLogic {
         }
         return updatedSpeed;
     }
-    // Method to show the home screen
-    public static void showHomeScreen(Stage stage) {
-        // Initialize HomeScreenView and HomeScreenLogic
-        HomeScreenView homeScreenView = new HomeScreenView(stage);
-        new HomeScreenLogic(homeScreenView, stage);
-
-        // Create a new Scene for the home screen
-        Scene homeScreenScene =
-                new Scene(homeScreenView, GameStart.SCENE_WIDTH, GameStart.SCENE_HEIGHT);
-
-        stage.setScene(homeScreenScene);
-    }
 
     /**
      * Starts a new game by loading the levels and initializing the game engine with the first level.
@@ -120,9 +121,7 @@ public class HomeScreenLogic {
             Level firstLevel = levels.get(0);
             GameEngine gameEngine = new GameEngine(new GamePane(), stage);
             gameEngine.startLevel(firstLevel);
-        } else {
-            // Debug: No levels found in the JSON file
-            System.out.println("Debug: No levels found in the JSON file.");
+        } else {System.out.println("Debug: No levels found in the JSON file.");
         }
     }
 
@@ -131,7 +130,6 @@ public class HomeScreenLogic {
      */
     private void selectLevel() {
         GameEngine gameEngine = new GameEngine(new GamePane(), stage);
-        // gameEngine.getGamePane().getBall().updateSpeed();
         // Fetch the list of available levels
         List<Level> levels = LevelHandler.readLevels();
 

@@ -7,7 +7,6 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class HomeScreenView extends VBox {
-    // Buttons for the menu
     private final Button newGameButton;
     private final Button selectLevelButton;
     private final Button highScoresButton;
@@ -27,11 +26,9 @@ public class HomeScreenView extends VBox {
         // Set the alignment to center
         setAlignment(Pos.CENTER); // Center the children nodes vertically
 
-        // Add some spacing between buttons
         setSpacing(10);
-        // Add buttons to layout
         getChildren()
-                .addAll(newGameButton, selectLevelButton, highScoresButton,  soundToggleButton, setDifficultyButton, exitButton);
+                .addAll(newGameButton, selectLevelButton, highScoresButton, soundToggleButton, setDifficultyButton, exitButton);
         // Initialize background
         fitBackgroundToStage(stage);
     }
@@ -51,6 +48,7 @@ public class HomeScreenView extends VBox {
     public Button getSoundToggleButton() {
         return soundToggleButton;
     }
+
     public Button getSetDifficultyButton() {
         return setDifficultyButton;
     }
@@ -74,10 +72,8 @@ public class HomeScreenView extends VBox {
     }
 
     private void updateBackground() {
-        // Replace with the actual path to your image
         Image backgroundImage = new Image("/backgrounds/homescreen.jpg");
 
-        // Create a BackgroundSize object with stretching enabled but aspect ratio not maintained
         BackgroundSize backgroundSize =
                 new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 
@@ -91,7 +87,6 @@ public class HomeScreenView extends VBox {
                         backgroundSize);
 
         // Set the background for this pane
-        // Explicit background field for more control if needed
         Background vboxBackground = new Background(backgroundImageObj);
         this.setBackground(vboxBackground);
     }

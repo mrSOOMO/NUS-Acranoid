@@ -28,11 +28,9 @@ public class GamePane extends Pane {
         bricks = new ArrayList<>();
         initLifeIndicator();
         initBallAndPaddle();
-        // Load background image from resources
         Image backgroundImage =
                 new Image(Objects.requireNonNull(getClass().getResourceAsStream("/backgrounds/background.gif")));
 
-        // Create a BackgroundImage object with various settings
         BackgroundImage background =
                 new BackgroundImage(
                         backgroundImage,
@@ -42,7 +40,6 @@ public class GamePane extends Pane {
                         new BackgroundSize(
                                 BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false));
 
-        // Set the background to the GamePane
         setBackground(new Background(background));
     }
 
@@ -65,24 +62,16 @@ public class GamePane extends Pane {
      * @param brickList The new list of Brick objects.
      */
     public void setBricks(List<Brick> brickList) {
-        // Clear the existing bricks and their corresponding Rectangles
         this.bricks.clear();
-        // this.getChildren().removeAll(this.brickRectangles);
-        // this.brickRectangles.clear();
-
-        // Set the new bricks
         this.bricks = brickList;
-
         getChildren().addAll(brickList);
     }
+
     /**
      * Clears all game elements from the pane.
      */
     public void clear() {
-        // Remove all children elements from this pane
         getChildren().clear();
-
-        // If you have other resources or timers to clear, do it here
     }
 
     // Initialize life indicator
@@ -107,13 +96,12 @@ public class GamePane extends Pane {
      */
     private void initBallAndPaddle() {
         // Initialize ball and paddle
-        this.ball = new Ball(/* parameters for position, radius, etc. */); // Updating class field
-        this.paddle =
-                new Paddle(/* parameters for position, dimensions, etc. */); // Updating class field
+        this.ball = new Ball();
+        this.paddle = new Paddle();
 
-        // Add them to the game pane
         getChildren().addAll(ball, paddle);
     }
+
     public void updateLifeIndicator(int remainingLives) {
         lifeLabel.setText("❤".repeat(Math.max(0, remainingLives))
         );

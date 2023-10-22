@@ -67,7 +67,6 @@ public class Paddle extends Rectangle {
     }
 
     public void resetVelocity() {
-        // Method to reset velocity to zero (e.g., when paddle stops)
         velocity = 0;
     }
 }

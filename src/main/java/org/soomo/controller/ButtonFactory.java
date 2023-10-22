@@ -37,6 +37,7 @@ public class ButtonFactory {
         });
         return tryButton;
     }
+
     public static Button createExitButton() {
         Button exitButton = new Button("Exit");
         exitButton.setOnAction(e -> System.exit(0));
@@ -46,10 +47,7 @@ public class ButtonFactory {
     public static Button createResumeButton(Alert alert, GameEngine gameEngine) {
         Button resumeButton = new Button("Resume");
         resumeButton.setOnAction(e -> {
-            // Toggle pause state
             gameEngine.togglePause();
-
-            // Close the alert dialog
             alert.getDialogPane().getScene().getWindow().hide();
         });
         return resumeButton;
@@ -81,7 +79,7 @@ public class ButtonFactory {
                     // Set dimensions for the ImageView, optional
                     finalWinGif.setPreserveRatio(true);
                     finalWinGif.setFitHeight(300);
-                    gameEngine.createAlertWithContent( finalWinGif,"finalWin").show();
+                    gameEngine.createAlertWithContent(finalWinGif, "finalWin").show();
                 });
             }
         });

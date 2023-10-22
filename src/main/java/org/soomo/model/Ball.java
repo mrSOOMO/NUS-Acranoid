@@ -10,10 +10,10 @@ import static org.soomo.controller.GameStart.SCENE_HEIGHT;
 import static org.soomo.controller.GameStart.SCENE_WIDTH;
 
 public class Ball extends Circle {
+    public static double speed = 3;
     private final int BALL_RADIUS = SCENE_HEIGHT / 30;
     private double xSpeed; // Horizontal speed
     private double ySpeed; // Vertical speed
-    public static double speed = 3;
 
     public Ball() {
         Image ballImage =
@@ -71,9 +71,7 @@ public class Ball extends Circle {
         xSpeed = (-speed * Math.cos(angleInRadians)); // Set xSpeed for left direction
         ySpeed = (-speed * Math.sin(angleInRadians)); // Set ySpeed (negative to move upwards)
     }
-    /**
-     * Set the ball's direction to go right at a specific angle.
-     */
+
     public void setDirectionRightAtAngle(double angleInDegrees) {
         double angleInRadians = Math.toRadians(angleInDegrees);
         if (xSpeed < speed) {
@@ -83,9 +81,6 @@ public class Ball extends Circle {
         xSpeed = (speed * Math.cos(angleInRadians)); // Set xSpeed for right direction
         ySpeed = (-speed * Math.sin(angleInRadians)); // Set ySpeed (negative to move upwards)
     }
-    /**
-     * Set the ball's direction to move straight up.
-     */
     public void setDirectionUp() {
         xSpeed = 0; // No horizontal movement
         ySpeed = -speed; // Make sure ySpeed is negative to move the ball upwards

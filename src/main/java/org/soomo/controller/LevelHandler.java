@@ -114,7 +114,4 @@ public class LevelHandler {
         }
         return bricks;
     }
-
-    // Additional functionalities as needed
-
 }
