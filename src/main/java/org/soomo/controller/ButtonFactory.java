@@ -12,6 +12,7 @@ import org.soomo.view.GamePane;
 import java.util.Objects;
 
 import static org.soomo.controller.HomeScreenLogic.showHomeScreen;
+import static org.soomo.controller.ScoreManager.stopScoring;
 
 public class ButtonFactory {
 
@@ -20,6 +21,7 @@ public class ButtonFactory {
         homeScreenButton.setOnAction(e -> {
             // Close the alert dialog
             alert.getDialogPane().getScene().getWindow().hide();
+            stopScoring();
             showHomeScreen(stage);
             HomeScreenLogic.showHomeScreen(stage);
         });

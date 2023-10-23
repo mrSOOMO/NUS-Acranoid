@@ -255,10 +255,7 @@ public class GameEngine {
         // Clear any existing game elements from the game pane
         gamePane.clear();
         gamePane = new GamePane();
-        // gamePane.getBall().updateSpeed();
-        // Score Manager
         gamePane.getChildren().add(new ScoreManager().getScoreLabel());
-        ScoreManager.startScoring();
 
         Text readyText = createReady();
         Text goText = createGo();
@@ -275,6 +272,7 @@ public class GameEngine {
 
         // Create the Timeline for 'Ready'
         Timeline readyTimeline = getTimeline(readyText, goText);
+       // readyTimeline.setOnFinished(event -> ScoreManager.startScoring());
         readyTimeline.play();
 
         // Set the new brick layout in the game pane
@@ -325,6 +323,7 @@ public class GameEngine {
         }), new KeyFrame(Duration.seconds(2), ae -> {
             goText.setVisible(false);
             // Start the game loop here
+            ScoreManager.startScoring();
             startGameLoop();
         }));
 
@@ -372,9 +371,11 @@ public class GameEngine {
     public void togglePause() {
         if (isPaused) {
             // Unpause game
+            startScoring();
             gameLoop.start();
         } else {
             // Pause game
+            stopScoring();
             gameLoop.stop();
             showPauseScreen();
         }
@@ -385,7 +386,7 @@ public class GameEngine {
         gameLoop = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                update(); // Update game logic
+                update();
             }
         };
         gameLoop.start();
